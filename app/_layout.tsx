@@ -19,6 +19,7 @@ const InitialLayout = () => {
         SpaceMono: require('../assets/fonts/SpaceMono-Regular.ttf'),
         ...FontAwesome.font,
     });
+    const router = useRouter();
 
     // Expo Router uses Error Boundaries to catch errors in the navigation tree.
     useEffect(() => {
@@ -38,6 +39,20 @@ const InitialLayout = () => {
     return (
         <Stack>
             <Stack.Screen name='index' options={{ headerShown: false }} />
+            <Stack.Screen
+                name='signup'
+                options={{
+                    title: '',
+                    headerBackTitle: '',
+                    headerShadowVisible: false,
+                    headerStyle: { backgroundColor: Colors.background },
+                    headerLeft: () => (
+                        <TouchableOpacity onPress={router.back}>
+                            <Ionicons name='arrow-back' size={34} color={Colors.dark} />
+                        </TouchableOpacity>
+                    ),
+                }}
+            />
         </Stack>
     );
 };
